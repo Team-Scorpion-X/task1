@@ -1,0 +1,161 @@
+/* Reset & Base Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: #2e4756; /* A dark bluish background */
+    height: 100%;
+  }
+  
+  .login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+  }
+  
+  /* The card that holds the form */
+  .login-container {
+    padding: 1rem;
+  }
+  
+  .login-card {
+    background: #ffffff;
+    border-radius: 8px;
+    width: 350px;
+    max-width: 100%;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    padding: 2rem;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .login-title {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  /* Form styling */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Wrapper for inputs with icons */
+  .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Input fields */
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    width: 100%;
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    color: #333;
+    box-sizing: border-box;
+  }
+  
+  .login-form input::placeholder {
+    color: #999;
+  }
+  
+  /* Input Icons */
+  .input-icon {
+    position: absolute;
+    left: 0.75rem;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  
+  /* Example icons: You can use actual icon URLs or data URIs */
+  .user-icon {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C9.79 2 8 3.79 8 6C8 8.21 9.79 10 12 10C14.21 10 16 8.21 16 6C16 3.79 14.21 2 12 2zM12 12C9.33 12 4 13.34 4 16V18H20V16C20 13.34 14.67 12 12 12z"/></svg>');
+  }
+  
+  .lock-icon {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 8H16V6C16 3.79 14.21 2 12 2C9.79 2 8 3.79 8 6V8H7C5.9 8 5 8.9 5 10V20C5 21.11 5.9 22 7 22H17C18.11 22 19 21.11 19 20V10C19 8.9 18.11 8 17 8zM14 8H10V6C10 4.9 10.9 4 12 4C13.11 4 14 4.9 14 6V8z"/></svg>');
+  }
+  
+  /* Login button */
+  .login-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    background: #00a8a8;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background: #008f8f;
+  }
+  
+  /* Hover/Focus on inputs */
+  .login-form input[type="text"]:focus,
+  .login-form input[type="password"]:focus {
+    border-color: #00a8a8;
+    outline: none;
+  }
+  
+  /* Responsive Adjustments */
+  
+  /* Tablet and smaller devices */
+  @media (max-width: 768px) {
+    .login-card {
+      width: 80%;
+      padding: 1.5rem;
+    }
+    .login-title {
+      font-size: 1.1rem;
+    }
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      font-size: 0.9rem;
+    }
+    .login-btn {
+      font-size: 0.95rem;
+    }
+  }
+  
+  /* Very small devices (mobile) */
+  @media (max-width: 400px) {
+    .login-card {
+      width: 100%;
+      padding: 1.5rem 1rem;
+    }
+    .login-title {
+      font-size: 1rem;
+    }
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      font-size: 0.85rem;
+    }
+    .login-btn {
+      font-size: 0.9rem;
+      padding: 0.65rem;
+    }
+  }
+  
