@@ -17,16 +17,31 @@ export const register = async (req, res, next) => {
     db.query(q, [validData.user_name, validData.email], async (err, result) => {
       if (err) {
         console.log(err);
-        return next(createError.InternalServerError()); // Handle database errors
+        return res.status(500).json({
+          error: {
+            status: 500,
+            message: "Internal Server Error",
+          },
+        });
       }
 
       // If a conflict is found, return an appropriate error
       if (result.length > 0) {
         if (result.some((user) => user.user_name === validData.user_name)) {
-          return next(createError.Conflict("Username already exists"));
+          return res.status(409).json({
+            error: {
+              status: 409,
+              message: "Username already exists",
+            },
+          });
         }
         if (result.some((user) => user.email === validData.email)) {
-          return next(createError.Conflict("Email already exists"));
+          return res.status(409).json({
+            error: {
+              status: 409,
+              message: "Email already exists",
+            },
+          });
         }
       } else {
         // Hash the password
@@ -47,24 +62,47 @@ export const register = async (req, res, next) => {
           (err, result) => {
             if (err) {
               console.log(err);
-              return next(createError.InternalServerError()); // Handle insertion errors
+              return res.status(500).json({
+                error: {
+                  status: 500,
+                  message: "Failed to create user. Please try again.",
+                },
+              });
             }
 
-            // Generate a token for the user (optional)
+            // Generate a token for the user
             const token = generateToken({ id: result.insertId, email: validData.email });
-            res.status(201).send({ message: "User registered successfully", token });
+            res.status(201).json({
+              message: "User registered successfully",
+              token,
+            });
           }
         );
       }
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
 
     // Handle validation and other synchronous errors
-    if (error.isJoi === true) error.status = 422;
-    next(error);
+    if (error.isJoi === true) {
+      return res.status(422).json({
+        error: {
+          status: 422,
+          message: error.details[0].message,
+        },
+      });
+    }
+
+    // Fallback for unexpected errors
+    return res.status(500).json({
+      error: {
+        status: 500,
+        message: "An unexpected error occurred.",
+      },
+    });
   }
 };
+
 
 
 
@@ -96,7 +134,7 @@ export const login = async (req, res, next) => {
       if (!isPasswordValid) {
         return next(createError.Unauthorized("Invalid username, email, or password."));
       }
-
+//  const token = generateToken({ id: result.insertId, email: validData.email });
       // Generate a token for the user
       const token = jwt.sign(
         { id: user.user_id, user_name: user.user_name, email: user.email },

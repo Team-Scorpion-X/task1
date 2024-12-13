@@ -1,0 +1,80 @@
+.create-post-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #1e1e2f;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .create-post-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #4caf50;
+  }
+  
+  .create-post-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .create-post-form label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ddd;
+  }
+  
+  .create-post-form input,
+  .create-post-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 1rem;
+    border: 1px solid #4caf50;
+    border-radius: 5px;
+    background: #2b2b3d;
+    color: #fff;
+  }
+  
+  .create-post-form textarea {
+    height: 120px;
+    resize: none;
+  }
+  
+  .create-post-form input::placeholder,
+  .create-post-form textarea::placeholder {
+    color: #aaa;
+  }
+  
+  .create-post-form input[type="file"] {
+    padding: 5px;
+    background: #2b2b3d;
+    border: none;
+  }
+  
+  .submit-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    background: #4caf50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background: #45a049;
+  }
+  
+  .message {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1rem;
+    color: #4caf50;
+  }
+  

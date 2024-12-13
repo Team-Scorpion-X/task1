@@ -42,8 +42,7 @@ const MyPosts = () => {
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1>My Posts</h1>
+    <div className="text-white" style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       {posts.length === 0 ? (
         <p>You have not created any posts yet.</p>
       ) : (

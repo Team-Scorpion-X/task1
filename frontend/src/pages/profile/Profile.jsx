@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './profile.css'; // Import the CSS file
 import MyPosts from "../../comp/MyPosts";
+import {Link} from 'react-router-dom'
 
 
 const UserProfile = () => {
@@ -74,17 +75,16 @@ const UserProfile = () => {
       )}
 
       <h2 className="profile-subtitle">My Posts</h2>
-      <div className="my-posts">
-        {/* Replace this with dynamic posts once available */}
-        <div className="post-item">Post Title 1</div>
-        <div className="post-item">Post Title 2</div>
-        <div className="post-item">Post Title 3</div>
 
+      <Link to={"/post/new"}><button className="text-white border">NEW</button></Link>
       <div className="myposts">
+
         <MyPosts/>
 
       </div>
-    </div>
+
+      </div>
+
   );
 };
 

@@ -1,6 +1,6 @@
 import createHttpError from 'http-errors';
 import jwt from 'jsonwebtoken';
-import db from '../db/db.js';
+import db from '../db/Db.js';
 
 
 // Function to generate a token

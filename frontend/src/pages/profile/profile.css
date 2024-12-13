@@ -1,113 +1,109 @@
-/* profile.css */
-
-/* Overall page styling similar to the registration page */
 body {
-    margin:0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: #1F3A45; /* Similar dark teal background as the registration page */
-    color: #333;
-  }
-  
-  /* Container holding the profile card and content */
-  .profile-page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 10px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  /* Main profile heading */
-  .profile-title {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    color: #000; /* Dark text for contrast on white card */
-    text-align: center;
-  }
-  
-  /* Card-like container for the user details, similar to the white box in registration */
-  .profile-card {
-    background: #fff;
-    border-radius: 8px;
-    width: 100%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    padding: 50px;
-    margin-bottom: 30px;
-  }
-  
-  /* Individual profile item rows */
+  margin:0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #1F3A45; /* Similar dark teal background as the registration page */
+  color: #333;
+}
+
+/* Container holding the profile card and content */
+.profile-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Main profile heading */
+.profile-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #000; /* Dark text for contrast on white card */
+  text-align: center;
+}
+
+/* Card-like container for the user details, similar to the white box in registration */
+.profile-card {
+  background: #fff;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 50px;
+  margin-bottom: 30px;
+}
+
+/* Individual profile item rows */
+.profile-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+/* Labels for the user details */
+.profile-label {
+  font-weight: bold;
+  color: #333;
+  margin-right: 20px;
+}
+
+/* Values for the user details */
+.profile-value {
+  color: #555;
+  text-align: right;
+  flex-grow: 1;
+}
+
+/* Subtitle for sections like "My Posts" */
+.profile-subtitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0 10px;
+  color: #fff; /* White text to stand out on dark background */
+  text-align: center;
+}
+
+/* Container for the posts section */
+.my-posts {
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+/* Individual post items */
+.post-item {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Loading and error messages */
+.loading-msg, .error-msg {
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
   .profile-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-  }
-  
-  /* Labels for the user details */
-  .profile-label {
-    font-weight: bold;
-    color: #333;
-    margin-right: 20px;
-  }
-  
-  /* Values for the user details */
-  .profile-value {
-    color: #555;
-    text-align: right;
-    flex-grow: 1;
-  }
-  
-  /* Subtitle for sections like "My Posts" */
-  .profile-subtitle {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 20px 0 10px;
-    color: #fff; /* White text to stand out on dark background */
-    text-align: center;
-  }
-  
-  /* Container for the posts section */
-  .my-posts {
-    width: 100%;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    padding: 20px;
-  }
-  
-  /* Individual post items */
-  .post-item {
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 12px;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  /* Loading and error messages */
-  .loading-msg, .error-msg {
-    color: #fff;
-    font-size: 18px;
-    text-align: center;
-    margin: 20px 0;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 480px) {
-    .profile-item {
       flex-direction: column;
       align-items: flex-start;
-    }
-  
-    .profile-value {
+  }
+
+  .profile-value {
       text-align: left;
       margin-top: 5px;
-    }
   }
-  
+}
