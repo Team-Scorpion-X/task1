@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './profile.css'; // Import the CSS file
+import MyPosts from "../../comp/MyPosts";
+
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -15,7 +17,8 @@ const UserProfile = () => {
 
         const response = await axios.get("http://localhost:4443/profile", {
           headers: {
-            Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcl9uYW1lIjoiam9obmRvZTEyMyIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJpYXQiOjE3MzQwNzQyOTIsImV4cCI6MTczNDA3Nzg5Mn0.VvF1MqZKCk7yVq_JfgDzfPWg3mxHZdIUl9OgG3wtIIU',
+            Authorization: `${token}`,
+
           },
         });
 
@@ -34,6 +37,7 @@ const UserProfile = () => {
   if (error) return <p className="error-msg">{error}</p>;
 
   return (
+
     <div className="profile-page-container">
       <h1 className="profile-title">User Profile</h1>
       {user && (
@@ -75,6 +79,10 @@ const UserProfile = () => {
         <div className="post-item">Post Title 1</div>
         <div className="post-item">Post Title 2</div>
         <div className="post-item">Post Title 3</div>
+
+      <div className="myposts">
+        <MyPosts/>
+
       </div>
     </div>
   );

@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
-import './login.css';
-
-const apiBase = process.env.REACT_APP_API;
+import "./login.css";
 
 const Login = ({ setIsLoggedIn }) => {
   const [formData, setFormData] = useState({
-    phone_number: "",
+    loginIdentifier: "",
     password: "",
   });
 
@@ -17,7 +15,7 @@ const Login = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "MEDtools.lk | Login";
+    document.title = "CODECAMPUS | Login";
   }, []);
 
   const handleChange = (e) => {
@@ -26,15 +24,19 @@ const Login = ({ setIsLoggedIn }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { phone_number, password } = formData;
+    const { loginIdentifier, password } = formData;
 
     try {
       setLoading(true);
-      const response = await axios.post(`${apiBase}/auth/login`, {
-        phone_number,
+      // Call the login API
+      const response = await axios.post(`http://localhost:4443/auth/login`, {
+        loginIdentifier,
         password,
       });
+
+      // Save token in local storage
       localStorage.setItem("token", response.data.token);
+
       toast.success("Login successful!", {
         position: "top-right",
         autoClose: 5000,
@@ -45,14 +47,13 @@ const Login = ({ setIsLoggedIn }) => {
         progress: undefined,
       });
 
-      if (response.data.type === "admin") {
-        navigate("/admin");
-      } else {
-        setIsLoggedIn(true);
-        navigate("/");
-      }
+      
+      navigate("/profile")
+      setIsLoggedIn(true); // Update parent state
+      navigate("/"); // Redirect to the homepage
     } catch (err) {
-      const error_message = err.response?.data?.error?.message || "Login failed!";
+      const error_message =
+        err.response?.data?.message || "Login failed. Please try again.";
       toast.error(error_message, {
         position: "top-right",
         autoClose: 5000,
@@ -78,14 +79,15 @@ const Login = ({ setIsLoggedIn }) => {
 
           <form onSubmit={handleSubmit} className="login-form">
             <div className="form-group">
-              <label htmlFor="phone_number">Username:</label>
+              <label htmlFor="loginIdentifier">Username or Email:</label>
               <input
                 type="text"
-                id="phone_number"
-                name="phone_number"
-                placeholder="Username or Email"
-                value={formData.phone_number}
+                id="loginIdentifier"
+                name="loginIdentifier"
+                placeholder="Enter your username or email"
+                value={formData.loginIdentifier}
                 onChange={handleChange}
+                required
               />
             </div>
 
@@ -98,12 +100,8 @@ const Login = ({ setIsLoggedIn }) => {
                 placeholder="••••••••"
                 value={formData.password}
                 onChange={handleChange}
+                required
               />
-              <div className="extras">
-                <Link to="/forgot-password" className="forgot-link">
-                  {/* Forgot password? */}
-                </Link>
-              </div>
             </div>
 
             <button

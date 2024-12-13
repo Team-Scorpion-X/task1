@@ -45,3 +45,44 @@ export const getUserDetails = async (req, res, next) => {
     next(error);
   }
 };
+
+
+export const getMyPosts = async (req, res, next) => {
+  try {
+    const token = req.headers['authorization'];
+    const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decodedData.id;
+
+    // Query to fetch posts by the logged-in user
+    const q = `SELECT post_id, user_id, status, title, content, image FROM posts WHERE user_id = ? ORDER BY post_id DESC`;
+    db.query(q, [userId], (err, results) => {
+      if (err) {
+        console.log(err);
+        return next(createError.InternalServerError("Database error."));
+      }
+
+      // If no posts are found, return an appropriate message
+      if (results.length === 0) {
+        return res.status(200).json({
+          message: "No posts found.",
+          posts: [],
+        });
+      }
+
+      // Send the list of posts
+      res.status(200).json({
+        message: "Posts retrieved successfully.",
+        posts: results.map((post) => ({
+          id: post.post_id,
+          title: post.title,
+          content: post.content,
+          image: post.image,
+          status: post.status,
+        })),
+      });
+    });
+  } catch (error) {
+    console.log(error);
+    next(createError.InternalServerError("Error fetching posts."));
+  }
+};

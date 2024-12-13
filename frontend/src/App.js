@@ -8,6 +8,7 @@ import Login from './pages/auth/Login';  // Import your Login page
 import Registration from './pages/auth/Register';
 
 import UserProfile from './pages/profile/Profile';
+import CreatePost from './pages/posts/NewPost';
 
 
 
@@ -31,11 +32,13 @@ function App() {
 
         {/* Define the Routes inside BrowserRouter */}
         <Routes>
-          <Route path="/" element={<Login />} />  {/* This route loads the Login page */}
+          <Route path="/" element={<Login />} />  
 
-          <Route path="/register" element={<Registration/>} />  {/* This route loads the Login page */}
+          <Route path="/register" element={<Registration/>} />  
 
-          <Route path="/profile" element={<UserProfile />} />  {/* This route loads the Login page */}
+          <Route path="/profile" element={<UserProfile />} />  
+
+          <Route path="/post/new" element={<CreatePost />} />  
 
           {/* You can add more routes here */}
           {/* Example: <Route path="/dashboard" element={<Dashboard />} /> */}
