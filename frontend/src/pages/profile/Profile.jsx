@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import './profile.css'; // Import the CSS file
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -7,28 +8,17 @@ const UserProfile = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch the user's profile
     const fetchProfile = async () => {
       try {
         setLoading(true);
-
-        // Get token from local storage (assuming token is saved here after login)
         const token = localStorage.getItem("token");
-        if (!token) {
-          setError("No token found. Please log in.");
-          setLoading(false);
-          return;
-        }
 
-        // Call the API
         const response = await axios.get("http://localhost:4443/profile", {
           headers: {
-            // Authorization: `${token}`,
-            Authorization: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcl9uYW1lIjoiam9obmRvZTEyMyIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJpYXQiOjE3MzQwNzA2MDAsImV4cCI6MTczNDA3NDIwMH0.idZv63MCWB2fPZahxX5RamC0LO3akxwoeYa69jYOFWk`,
+            Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcl9uYW1lIjoiam9obmRvZTEyMyIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJpYXQiOjE3MzQwNzQyOTIsImV4cCI6MTczNDA3Nzg5Mn0.VvF1MqZKCk7yVq_JfgDzfPWg3mxHZdIUl9OgG3wtIIU',
           },
         });
 
-        // Set user details in state
         setUser(response.data.user);
         setLoading(false);
       } catch (err) {
@@ -40,44 +30,52 @@ const UserProfile = () => {
     fetchProfile();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
+  if (loading) return <p className="loading-msg">Loading...</p>;
+  if (error) return <p className="error-msg">{error}</p>;
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1>User Profile</h1>
-      <table border="1" style={{ borderCollapse: "collapse", width: "50%" }}>
-        <tbody>
-          <tr>
-            <th>ID</th>
-            <td>{user.id}</td>
-          </tr>
-          <tr>
-            <th>First Name</th>
-            <td>{user.first_name}</td>
-          </tr>
-          <tr>
-            <th>Last Name</th>
-            <td>{user.last_name}</td>
-          </tr>
-          <tr>
-            <th>Username</th>
-            <td>{user.user_name}</td>
-          </tr>
-          <tr>
-            <th>University</th>
-            <td>{user.university}</td>
-          </tr>
-          <tr>
-            <th>Registration Number</th>
-            <td>{user.reg_no}</td>
-          </tr>
-          <tr>
-            <th>Email</th>
-            <td>{user.email}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className="profile-page-container">
+      <h1 className="profile-title">User Profile</h1>
+      {user && (
+        <div className="profile-card">
+          <div className="profile-item">
+            <span className="profile-label">ID</span>
+            <span className="profile-value">{user.id}</span>
+          </div>
+          <div className="profile-item">
+            <span className="profile-label">First Name</span>
+            <span className="profile-value">{user.first_name}</span>
+          </div>
+          <div className="profile-item">
+            <span className="profile-label">Last Name</span>
+            <span className="profile-value">{user.last_name}</span>
+          </div>
+          <div className="profile-item">
+            <span className="profile-label">Username</span>
+            <span className="profile-value">{user.user_name}</span>
+          </div>
+          <div className="profile-item">
+            <span className="profile-label">University</span>
+            <span className="profile-value">{user.university}</span>
+          </div>
+          <div className="profile-item">
+            <span className="profile-label">Registration Number</span>
+            <span className="profile-value">{user.reg_no}</span>
+          </div>
+          <div className="profile-item">
+            <span className="profile-label">Email</span>
+            <span className="profile-value">{user.email}</span>
+          </div>
+        </div>
+      )}
+
+      <h2 className="profile-subtitle">My Posts</h2>
+      <div className="my-posts">
+        {/* Replace this with dynamic posts once available */}
+        <div className="post-item">Post Title 1</div>
+        <div className="post-item">Post Title 2</div>
+        <div className="post-item">Post Title 3</div>
+      </div>
     </div>
   );
 };
