@@ -4,6 +4,7 @@ import './App.css';
 import { ToastContainer } from "react-toastify";  // Import ToastContainer
 import 'react-toastify/dist/ReactToastify.css';  // Import toastify CSS
 import Login from './pages/auth/Login';  // Import your Login page
+import Registration from './pages/auth/Register';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         {/* Define the Routes inside BrowserRouter */}
         <Routes>
           <Route path="/" element={<Login />} />  {/* This route loads the Login page */}
+          <Route path="/register" element={<Registration/>} />  {/* This route loads the Login page */}
           {/* You can add more routes here */}
           {/* Example: <Route path="/dashboard" element={<Dashboard />} /> */}
         </Routes>

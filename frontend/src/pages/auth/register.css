@@ -1,0 +1,187 @@
+/* Reset & Base Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: #2e4756; /* Same dark bluish background as the login page */
+    height: 100%; /* Make sure html/body take full viewport height */
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  /* Target the main container div by its inline style attribute */
+  div[style*="max-width: 400px"] {
+    background: #ffffff !important;
+    border-radius: 8px !important;
+    width: 400px !important;
+    max-width: 100% !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1) !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    /* Reduce padding to fit all fields without scrolling */
+    padding: 1.5rem !important;
+    /* Remove vertical scrolling and let it size naturally */
+    overflow: hidden !important;
+    height: auto !important;
+  }
+  
+  /* Title styling */
+  div[style*="max-width: 400px"] > h2 {
+    margin: 0 0 1rem 0 !important;
+    font-size: 1.2rem !important; /* Slightly smaller */
+    font-weight: 600 !important;
+    color: #333 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+  }
+  
+  /* Error and success messages styling */
+  div[style*="max-width: 400px"] .error-message,
+  div[style*="max-width: 400px"] [style*="color: red"] {
+    color: red !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  div[style*="max-width: 400px"] .success-message,
+  div[style*="max-width: 400px"] [style*="color: green"] {
+    color: green !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Form layout adjustments */
+  div[style*="max-width: 400px"] form {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    /* Reduce gap to save vertical space */
+    gap: 0.5rem !important;
+    text-align: left !important;
+  }
+  
+  /* Each form group */
+  div[style*="max-width: 400px"] form > div[style*="margin-bottom"] {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-bottom: 0.5rem !important; /* Less vertical spacing */
+  }
+  
+  /* Make the first four inputs two per row */
+  div[style*="max-width: 400px"] form > div[style*="margin-bottom"]:nth-child(1),
+  div[style*="max-width: 400px"] form > div[style*="margin-bottom"]:nth-child(2),
+  div[style*="max-width: 400px"] form > div[style*="margin-bottom"]:nth-child(3),
+  div[style*="max-width: 400px"] form > div[style*="margin-bottom"]:nth-child(4) {
+    width: calc(50% - 0.25rem) !important;
+  }
+  
+  /* The remaining fields (Email, Password, Confirm Password) span full width */
+  div[style*="max-width: 400px"] form > div[style*="margin-bottom"]:nth-child(n+5) {
+    width: 100% !important;
+  }
+  
+  div[style*="max-width: 400px"] form label {
+    margin-bottom: 0.25rem !important; /* Slightly less space */
+    font-weight: 500 !important;
+    color: #333 !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Inputs styling - smaller padding and font to fit better */
+  div[style*="max-width: 400px"] form input[type="text"],
+  div[style*="max-width: 400px"] form input[type="email"],
+  div[style*="max-width: 400px"] form input[type="password"] {
+    width: 100% !important;
+    padding: 0.5rem !important; /* Reduced padding */
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    font-size: 0.9rem !important;
+    color: #333 !important;
+    box-sizing: border-box !important;
+  }
+  
+  div[style*="max-width: 400px"] form input::placeholder {
+    color: #999 !important;
+    font-size: 0.85rem !important;
+  }
+  
+  /* Focus state */
+  div[style*="max-width: 400px"] form input[type="text"]:focus,
+  div[style*="max-width: 400px"] form input[type="email"]:focus,
+  div[style*="max-width: 400px"] form input[type="password"]:focus {
+    border-color: #00a8a8 !important;
+    outline: none !important;
+  }
+  
+  /* Button styling - slightly smaller to save space */
+  div[style*="max-width: 400px"] form button[type="submit"] {
+    width: 100% !important;
+    padding: 0.5rem !important; /* Reduced padding */
+    border: none !important;
+    border-radius: 4px !important;
+    background: #00a8a8 !important;
+    color: #ffffff !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background 0.3s ease !important;
+    margin-top: 0.5rem !important;
+  }
+  
+  div[style*="max-width: 400px"] form button[type="submit"]:hover {
+    background: #008f8f !important;
+  }
+  
+  /* Responsive & Desktop Adjustments */
+  @media (max-width: 768px) {
+    div[style*="max-width: 400px"] {
+      width: 80% !important;
+      padding: 1rem !important;
+    }
+    div[style*="max-width: 400px"] > h2 {
+      font-size: 1rem !important;
+    }
+    div[style*="max-width: 400px"] form input[type="text"],
+    div[style*="max-width: 400px"] form input[type="email"],
+    div[style*="max-width: 400px"] form input[type="password"] {
+      font-size: 0.85rem !important;
+      padding: 0.4rem !important;
+    }
+    div[style*="max-width: 400px"] form button[type="submit"] {
+      font-size: 0.9rem !important;
+      padding: 0.4rem !important;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    div[style*="max-width: 400px"] {
+      width: 100% !important;
+      padding: 0.75rem !important;
+    }
+    div[style*="max-width: 400px"] > h2 {
+      font-size: 0.9rem !important;
+    }
+    div[style*="max-width: 400px"] form input[type="text"],
+    div[style*="max-width: 400px"] form input[type="email"],
+    div[style*="max-width: 400px"] form input[type="password"] {
+      font-size: 0.8rem !important;
+      padding: 0.35rem !important;
+    }
+    div[style*="max-width: 400px"] form button[type="submit"] {
+      font-size: 0.85rem !important;
+      padding: 0.35rem !important;
+    }
+  }
+  
+  /* For larger desktop screens, increase width and use available space.
+     With reduced spacing, the entire form should fit without scrolling. */
+  @media (min-width: 1024px) {
+    div[style*="max-width: 400px"] {
+      width: 500px !important;
+    }
+  }
+  
