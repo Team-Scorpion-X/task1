@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import MyPosts from "../../comp/MyPosts";
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -23,8 +24,7 @@ const UserProfile = () => {
         // Call the API
         const response = await axios.get("http://localhost:4443/profile", {
           headers: {
-            // Authorization: `${token}`,
-            Authorization: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcl9uYW1lIjoiam9obmRvZTEyMyIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJpYXQiOjE3MzQwNzA2MDAsImV4cCI6MTczNDA3NDIwMH0.idZv63MCWB2fPZahxX5RamC0LO3akxwoeYa69jYOFWk`,
+            Authorization: `${token}`,
           },
         });
 
@@ -78,6 +78,10 @@ const UserProfile = () => {
           </tr>
         </tbody>
       </table>
+
+      <div className="myposts">
+        <MyPosts/>
+      </div>
     </div>
   );
 };

@@ -4,15 +4,20 @@ import createError from 'http-errors'
 import dotenv from 'dotenv'
 dotenv.config();
 import cors from 'cors'
-import AuthRouter from './routes/authRoutes.js';
+import path from 'path';
+import { fileURLToPath } from 'url';import AuthRouter from './routes/authRoutes.js';
 import profileRouter from './routes/profileRoutes.js';
 import postRouter from './routes/postRoutes.js';
 const app = express()
+    
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json())
 app.use(express.urlencoded({extended :true}))
 app.use(morgan('dev')); // loging all things
 app.use(cors());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.get("/", async (req,res)=>{
     res.send("Ay whotto mekt awe");
 })
