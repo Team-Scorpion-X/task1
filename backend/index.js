@@ -5,6 +5,8 @@ import dotenv from 'dotenv'
 dotenv.config();
 import cors from 'cors'
 import AuthRouter from './routes/authRoutes.js';
+import profileRouter from './routes/profileRoutes.js';
+import postRouter from './routes/postRoutes.js';
 const app = express()
 
 app.use(express.json())
@@ -16,6 +18,8 @@ app.get("/", async (req,res)=>{
 })
 
 app.use("/auth" , AuthRouter)
+app.use("/profile" , profileRouter)
+app.use("/posts" , postRouter)
 
 
 app.use(async (req,res,next) =>{
